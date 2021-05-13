@@ -9,10 +9,11 @@ fn main() {
             //^^ Option is a model to tell if a thing is there or not.
 
     let value = args.next().expect("Value was not there"); // Write a panic message with expect(). thread 'main' panicked at 'Value was not there';
-
+        
     println!("The key is '{}' and the value is '{}'", key, value); //Macro
 
     let contents = format!("{}\t{}\n", key, value); // << Similar to println! macro, but outputs to string instead.
-    std::fs::write("kv.db", contents);
-
+    let write_result = std::fs::write("kv.db", contents);
+                    //  ^^^ Either unit, or error.
+    //Macros will generate code, while function calls works as in other languages.
 }
